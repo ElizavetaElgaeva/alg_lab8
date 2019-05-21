@@ -41,7 +41,7 @@ class AdjListGraph:
         :param int u: индекс вершины графа
         :param int v: индекс вершины графа
         """
-        raise NotImplemented("Реализуйте этот метод")
+        self.adj[u].append(v)
 
     def remove_edge(self, u, v):
         """ Удалить ребро, соединяющее вершины с индексами u и v
@@ -49,14 +49,17 @@ class AdjListGraph:
         :param int u: индекс вершины графа
         :param int v: индекс вершины графа
         """
-        raise NotImplemented("Реализуйте этот метод")
+        self.adj[u].remove(v)
 
     def number_of_edges(self):
         """ Возвращает количество ребер в графе
 
         :rtype: int
         """
-        raise NotImplemented("Реализуйте этот метод")
+        c = 0
+        for i in range(self.number_of_vertices()):
+            c += len(self.adj[i])
+        return c
 
     def neighbors(self, v):
         """ Возвращает список индексов вершин, соседних с данной
@@ -64,7 +67,7 @@ class AdjListGraph:
         :param int v: индекс вершины графа
         :rtype: list of int
         """
-        raise NotImplemented("Реализуйте этот метод")
+        return [self.adj[v][i] for i in range(len(self.adj[v]))]
 
     def draw(self, filename='test.gv'):
         """
