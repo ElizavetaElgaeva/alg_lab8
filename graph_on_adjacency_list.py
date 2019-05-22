@@ -42,6 +42,7 @@ class AdjListGraph:
         :param int v: индекс вершины графа
         """
         self.adj[u].append(v)
+        self.adj[v].append(u)
 
     def remove_edge(self, u, v):
         """ Удалить ребро, соединяющее вершины с индексами u и v
@@ -50,6 +51,7 @@ class AdjListGraph:
         :param int v: индекс вершины графа
         """
         self.adj[u].remove(v)
+        self.adj[v].remove(u)
 
     def number_of_edges(self):
         """ Возвращает количество ребер в графе
